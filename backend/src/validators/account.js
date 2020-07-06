@@ -7,7 +7,7 @@ const accountSignUp = (req, res, next) => {
 
     const schema = Joi.object({
         email: Joi.string().email().required(),
-        password: Joi.string().pattern(new RegExp('ˆ[a-zA-Z-0-9]{3,30}')),
+        password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
         password_confirmation: Joi.string().valid(Joi.ref('password')).required(),
     });
 

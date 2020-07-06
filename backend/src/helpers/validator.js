@@ -1,9 +1,4 @@
-const { get } = require("../controllers/auth");
-const messages = require('../config/messages.json');
-
-const getMessage = (path) => {
-    return messages[path] || null;
-};
+const {getMessage} = require('./messages');
 
 const getValidatorError = (error, messagePath) => {
     if(!error) return null;
@@ -29,4 +24,4 @@ const getValidatorError = (error, messagePath) => {
 
 };
 
-module.exports = {getValidatorError};
+module.exports = { getValidatorError, getMessage };

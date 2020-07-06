@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const { Account } = require('../models');
 const { accountSignUp } = require('../validators/account');
+const { getMessage } = require('../helpers/validator');
 
 
 const router = express.Router();
@@ -20,13 +21,13 @@ router.post('/sign-up', accountSignUp, async (req, res) => {
     const account = await Account.findOne({ where: { email } });
 
     if (account) { 
-        return res.jsonBadRequest(null, 'Account already exists');
+        return res.jsonBadRequest(null, getMessage('account.signup.email_exists'));
     } 
 
     const hash = bcrypt.hashSync(password, saltRounds);
     const newAccount = await Account.create({email, password: hash});
 
-    return res.jsonOK(newAccount, 'Account created.');
+    return res.jsonOK(newAccount, getMessage('account.signup.success'));
 
 });
 

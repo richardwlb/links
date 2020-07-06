@@ -1,8 +1,15 @@
 {
+    "response.json_ok": "Requisição efetuada com sucesso.",
+    "response.json_bad_request": "Requisição inválida.",
+    "response.json_unauthorized": "Requisição negada.",
+    "response.json_not_found": "Não encontrado.",
+    "response.json_server_error": "Erro no servidor.",
     "account.signup.password_confirmation.any.required": "Confirmação de senha é obrigatório.",
     "account.signup.password.string.pattern.base": "A senha não contém todos os requisitos.",
     "account.signup.password.string.empty": "A senha é obrigatória.",
     "account.signup.email.string.email": "Favor preencher com um e-mail válido.",
-    "account.signup.email.string.empty": "O e-mail não pode ser vazio."
-
+    "account.signup.email.string.empty": "O e-mail não pode ser vazio.",
+    "account.signup.email_exists": "O e-mail ja está cadastrado.",
+    "account.signup.success": "Cadastro efetuado com sucesso.",
+    "account.signup.password_confirmation.any.only": "A confirmação do e-mail não são iguais."
 }
