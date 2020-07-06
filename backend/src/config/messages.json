@@ -1,0 +1,8 @@
+{
+    "account.signup.password_confirmation.any.required": "Confirmação de senha é obrigatório.",
+    "account.signup.password.string.pattern.base": "A senha não contém todos os requisitos.",
+    "account.signup.password.string.empty": "A senha é obrigatória.",
+    "account.signup.email.string.email": "Favor preencher com um e-mail válido.",
+    "account.signup.email.string.empty": "O e-mail não pode ser vazio."
+
+}
