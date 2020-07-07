@@ -4,6 +4,7 @@
     "response.json_unauthorized": "Requisição negada.",
     "response.json_not_found": "Não encontrado.",
     "response.json_server_error": "Erro no servidor.",
+
     "account.signup.password_confirmation.any.required": "Confirmação de senha é obrigatório.",
     "account.signup.password.string.pattern.base": "A senha não contém todos os requisitos.",
     "account.signup.password.string.empty": "A senha é obrigatória.",
@@ -11,5 +12,12 @@
     "account.signup.email.string.empty": "O e-mail não pode ser vazio.",
     "account.signup.email_exists": "O e-mail ja está cadastrado.",
     "account.signup.success": "Cadastro efetuado com sucesso.",
-    "account.signup.password_confirmation.any.only": "A confirmação do e-mail não são iguais."
+    "account.signup.password_confirmation.any.only": "A confirmação do e-mail não são iguais.",
+
+    "account.signin.password_confirmation.any.required": "Confirmação de senha é obrigatório.",
+    "account.signin.password.string.empty": "A senha é obrigatória.",
+    "account.signin.email.string.email": "Favor preencher com um e-mail válido.",
+    "account.signin.email.any.required": "Favor preencher o campo e-mail.",
+    "account.signin.invalid": "Credenciais inválidas.",
+    "account.signin.success": "Login efetuado com sucesso."
 }
