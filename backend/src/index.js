@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const db = require('./models');
 const response = require('./middlewares/response');
 const checkJwt = require('./middlewares/jwt');
@@ -9,6 +10,7 @@ const linkController = require('./controllers/link');
 const app = express();
 
 // Middleware. The first one before the rest.
+app.use(cors());
 app.use(response); 
 app.use(checkJwt); 
 // END Middleware. The first one before the rest.

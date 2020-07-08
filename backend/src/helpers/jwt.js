@@ -24,4 +24,10 @@ const verifyJRefreshJwt = (token) => {
     return jwt.verify(token, refrershTokenPrivateKey);
 };
 
-module.exports = { generateJwt, verifyJwt, generateRefreshJwt, verifyJRefreshJwt };
+const getTokenFromHeaders = (headers) => {
+    const token = headers['authorization'];
+    // Tirando o Beare do começo
+    return token ? token.slice(7, token.length) : null;
+};
+
+module.exports = { generateJwt, verifyJwt, generateRefreshJwt, verifyJRefreshJwt, getTokenFromHeaders };
