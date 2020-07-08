@@ -3,6 +3,7 @@ const db = require('./models');
 const response = require('./middlewares/response');
 
 const authController = require('./controllers/auth');
+const linkController = require('./controllers/link');
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json()); // To be able to receive data in JSON format
 app.use(express.urlencoded({ extended: false })); // Do not use qs Library
 
 app.use('/auth', authController);
+app.use('/link', linkController);
 
 app.get('/', (req, res) => {
     return res.json('Hello!')

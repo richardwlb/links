@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
        }, 
     });
 
+    Account.associate = (models) => {
+        Account.hasMany(models.Link, {foreignKey: 'accountId'});
+    }
+
     // made this to do not return password in return
     Account.prototype.toJSON = function () {
         const values = { ...this.get() };
