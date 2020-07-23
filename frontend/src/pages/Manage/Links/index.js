@@ -1,9 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { listLink } from '../../../actions/LinkActions';
 import Layout from '../../Layouts/Manage';
+import { useEffect } from 'react';
 
-const Links = () => {
+
+const Links = ( { links, listLink }) => {
+
+    useEffect( () => {
+        listLink();
+    }, [listLink]);
+
     return (
         <Layout>
             <div className="row">
@@ -16,21 +24,34 @@ const Links = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="pb-2 pt-2 pl-3 pr-3 d-flex flex-row justify-content-between">
+                
+                    
+                    { links && links.length ?
+                        links.map( (link) => {
+
+                    return (
+                <div key={link.id}  className="pb-2 pt-2 pl-3 pr-3 d-flex flex-row justify-content-between">
                     <div className="pr-3" >
                         <img src="https://via.placeholder.com/100" alt="Link icon"/>
                     </div>
                     <div className="align-self-center" >
-                        <span className="text-primary clearfix" >Item Label</span>
-                        <span className="text-primary clearfix" >Item Url</span>
+                        <span className="text-primary clearfix" >{link.label}</span>
+                        <span className="text-primary clearfix" >{link.url}</span>
                     </div>
                     <div className="ml-auto p-2 clearfix" >
                         <span>Edit</span>
                         <span>Delete</span>
-                    </div>
+                    </div> 
                 </div>
+                    );
+                }) : null }
+                
         </Layout>
     )
 };
 
-export default Links;
+const mapStateToProps = (state) => {
+    return { links: state.link.links };
+};
+
+export default connect(mapStateToProps, { listLink }) (Links);

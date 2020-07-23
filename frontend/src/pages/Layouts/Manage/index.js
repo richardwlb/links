@@ -12,7 +12,6 @@ const Layout = ({children, signOut, account}) => {
 
     const signOutHandler = (e) => {
         e.preventDefault();
-
         signOut();
     };
 

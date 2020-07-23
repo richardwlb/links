@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'; // REDUX
 import { signIn } from '../../actions/AccountActions';
+import { getFormData } from '../../helpers/form';
 
 const SignIn = (props)=> {                  // REDUX
     const { account, signIn } = props;       // REDUX
@@ -10,14 +11,9 @@ const SignIn = (props)=> {                  // REDUX
         return <Redirect to='/manage/links' />
     }
 
-
     const submitHandler = (e) => {
         e.preventDefault();
-
-        // pegando os valores do form:
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData);
-
+        const data = getFormData(e);
         signIn(data);
     };
 

@@ -14,8 +14,7 @@ const checkJwt = (req, res, next) => {
     // END Pulando algumas rotas que não precisam de verificação de autenticação 
 
     const token = getTokenFromHeaders(req.headers);
-    // Tirando o Beare do começo
-    token = token ? token.slice(7, token.length) : null;
+
     if(!token){
         return res.jsonUnauthorized(null, 'Invalid Token')
     }
@@ -23,11 +22,11 @@ const checkJwt = (req, res, next) => {
     try {
         const decoded = verifyJwt(token);
         req.accountId = decoded.id;
-    }catch {
-        console.log('error');
-    }
+        next();
+      } catch (error) {
+        return res.jsonUnauthorized(null, 'Invalid tokend');
+      }
 
-    next();
 };
 
 module.exports = checkJwt;
