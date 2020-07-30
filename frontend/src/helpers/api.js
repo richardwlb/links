@@ -21,10 +21,26 @@ export const apiPost = (path, data = {}) => {
     return axios.post(url, data, options);
 };
 
+export const apiPut = (path, data = {}) => {
+    const url = getApiUrl(path);
+    const options = {
+        headers: getHeaders(),
+    };
+    return axios.put(url, data, options);
+};
+
 export const apiGet = (path) => {
     const url = getApiUrl(path);
     const options = {
         headers: getHeaders(),
     };
     return axios.get(url, options);
+};
+
+export const apiDel = (path) => {
+    const url = getApiUrl(path);
+    const options = {
+        headers: getHeaders(),
+    };
+    return axios.delete(url, options);
 };

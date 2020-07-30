@@ -1,16 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { listLink } from '../../../actions/LinkActions';
+import { listLink, setLinkToRemove, linkRemove } from '../../../actions/LinkActions';
 import Layout from '../../Layouts/Manage';
 import { useEffect } from 'react';
 
 
-const Links = ( { links, listLink }) => {
+const Links = ( { links, listLink, setLinkToRemove, linkRemove, linkToRemove}) => {
 
     useEffect( () => {
         listLink();
     }, [listLink]);
+
+    const cancelDelete = (e) => setLinkToRemove(null);
+    const confirmDelete = (e) => (linkToRemove ? linkRemove(linkToRemove) : null);
 
     return (
         <Layout>
@@ -26,11 +29,15 @@ const Links = ( { links, listLink }) => {
                 </div>
                 
                     
-                    { links && links.length ?
-                        links.map( (link) => {
+                { links && links.length ?
+                    links.map( (link) => {
 
+                    const deleteClick = (e) => setLinkToRemove(link);
+
+                    const border = (linkToRemove && linkToRemove.id === link.id) ? 'border border-danger rounded' : 'border border-transparent';
+                    
                     return (
-                <div key={link.id}  className="pb-2 pt-2 pl-3 pr-3 d-flex flex-row justify-content-between">
+                <div key={link.id}  className={`pb-2 pt-2 pl-3 pr-3 d-flex flex-row justify-content-between ${border}`}>
                     <div className="pr-3" >
                         <img src="https://via.placeholder.com/100" alt="Link icon"/>
                     </div>
@@ -39,19 +46,39 @@ const Links = ( { links, listLink }) => {
                         <span className="text-primary clearfix" >{link.url}</span>
                     </div>
                     <div className="ml-auto p-2 clearfix" >
-                        <span>Edit</span>
-                        <span>Delete</span>
+                        <Link to={`/manage/links/edit/${link.id}`} >
+                            Edit
+                        </Link>
+                        <button className="btn btn-clear" onClick={deleteClick}>Delete</button>
                     </div> 
                 </div>
                     );
                 }) : null }
+
+                {linkToRemove ? (
+                    <div className="alert alert-danger rounded float-center shadow-bold">
+                    <h4 className="alert-heading">Delete Confirmation!</h4>
+                    <p>Are you sure you want to delete? This action cannot be undone!</p>
+                    <hr />
+                    <div className="d-flex justify-content-between">
+                        <button className="btn btn-outline-light" onClick={cancelDelete}>Cancel</button>
+                        <button className="btn btn-danger" onClick={confirmDelete}>Delete</button>
+                    </div>
+                    </div>
+                ) : null}
                 
         </Layout>
     )
 };
 
 const mapStateToProps = (state) => {
-    return { links: state.link.links };
+
+    console.log(state.link.linkToRemove);
+
+    return { 
+        links: state.link.links, 
+        linkToRemove: state.link.linkToRemove, 
+    };
 };
 
-export default connect(mapStateToProps, { listLink }) (Links);
+export default connect(mapStateToProps, { listLink, setLinkToRemove, linkRemove}) (Links);

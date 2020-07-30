@@ -34,7 +34,7 @@ const App = ({ initAccount}) => {
                     <Route path="/sign-in"><SignIn /></Route>
                     <Route path="/sign-up"><SignUp /></Route>
                     <Route path="/manage/links/create"><Create /></Route>
-                    <Route path="/manage/links/edit"><Edit /></Route>
+                    <Route path="/manage/links/edit/:id"><Edit /></Route>
                     <Route path="/manage/links"><ManageLinks /></Route>
                     <Route exact path="/"><Home /></Route>
                 </Switch>

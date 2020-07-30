@@ -31,7 +31,7 @@ import {
   
         const token = (metadata) ? metadata.token : null;
         const refreshToken = (metadata) ? metadata.refreshToken : null;
-  
+
         if (account) setAccount(account);
         if (token) setToken(token);
         if (refreshToken) setRefreshToken(refreshToken);
