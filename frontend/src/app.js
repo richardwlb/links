@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux'; // REDUX
 
 import SignIn from './pages/SignIn';
@@ -20,7 +20,7 @@ const App = ({ initAccount}) => {
     return (
         <BrowserRouter>
             <div>
-                <nav>
+                {/* <nav>
                     <ul className="list-group list-group-horizontal">
                         <li className="list-group-item"><Link to="/sign-in" >Sign in</Link></li>
                         <li className="list-group-item"><Link to="/sign-up" >Sign up</Link></li>
@@ -29,7 +29,7 @@ const App = ({ initAccount}) => {
                         <li className="list-group-item"><Link to="/manage/links" >Links</Link></li>
                         <li className="list-group-item"><Link to="/" >Home</Link></li>
                     </ul>
-                </nav>
+                </nav> */}
                 <Switch>
                     <Route path="/sign-in"><SignIn /></Route>
                     <Route path="/sign-up"><SignUp /></Route>

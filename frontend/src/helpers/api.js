@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from './account';
+import { getToken, getRefreshToken } from './account';
 
 export const getApiUrl = (path) => {
     return `http://localhost:3001${path}`;
@@ -8,6 +8,7 @@ export const getApiUrl = (path) => {
 export const getHeaders = () => {
     const token = getToken();
     if(!token) return {};
+
     return {
         Authorization: `Bearer ${token}`,
     };
@@ -19,6 +20,15 @@ export const apiPost = (path, data = {}) => {
         headers: getHeaders(),
     };
     return axios.post(url, data, options);
+};
+
+export const apiRefreshToken = () => {
+    const url = getApiUrl('/auth/refrersh');
+    const refrershToken = getRefreshToken();
+    const options = {
+        Authorization: `Bearer ${refrershToken}`,
+    };
+    return axios.post(url,  {}, options);
 };
 
 export const apiPut = (path, data = {}) => {

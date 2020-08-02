@@ -73,8 +73,6 @@ const Links = ( { links, listLink, setLinkToRemove, linkRemove, linkToRemove}) =
 
 const mapStateToProps = (state) => {
 
-    console.log(state.link.linkToRemove);
-
     return { 
         links: state.link.links, 
         linkToRemove: state.link.linkToRemove, 
