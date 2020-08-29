@@ -25,7 +25,10 @@ import {
       case UPDATE_LINK:{
 
         const response = payload ? payload.data : null;
-        const link = response ? response.data : null;
+        // const link = response ? response.data : null;
+        const link = response ? 'ok' : null;
+
+        console.log("linkReducer", link);
 
         return { ...state, link };
       }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 
 import { getLink } from '../../../../actions/LinkActions';
 import { updateLink } from '../../../../actions/LinkActions';
@@ -13,6 +13,8 @@ import { getFormData } from '../../../../helpers/form';
 const Edit = ({link, getLink, updateLink}) => {
 
     const { id } = useParams();
+    var ok = '';
+
 
     useEffect( () => {
         getLink(id);
@@ -22,8 +24,12 @@ const Edit = ({link, getLink, updateLink}) => {
         e.preventDefault();
         const data = getFormData(e);
         updateLink(id, data);
+        ok = 'ok';
     };
 
+    console.log('linkEdit.ok', ok);
+
+    if(ok = 'ok') return <Redirect to="/manage/links" />;
 
     return (
         <Layout>
